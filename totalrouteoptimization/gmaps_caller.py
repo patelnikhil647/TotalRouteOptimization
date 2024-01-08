@@ -1,7 +1,6 @@
 from googlemaps import distance_matrix as dm
 from datetime import datetime
-import config
-import json_handler
+from totalrouteoptimization import config, json_handler
 
 
 def create_dist_mat(first, second):

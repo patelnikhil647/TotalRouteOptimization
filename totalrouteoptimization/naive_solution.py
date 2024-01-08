@@ -1,6 +1,5 @@
 from itertools import permutations
-import gmaps_caller
-import json_handler
+from totalrouteoptimization import gmaps_caller, json_handler
 
 
 def naive_sol(origin, dests, end=None):
@@ -32,9 +31,9 @@ def naive_sol(origin, dests, end=None):
             perm.append(end)  # insert end to end of list if it exists
 
         for i in range(len(perm) - 1):  # for each location in this permutation
-            file = json_handler.create_filename(perm[i], perm[i+1])
+            file = json_handler.create_filename(perm[i], perm[i + 1])
             if not json_handler.does_file_exist(file):  # creates dist_mat if not created before
-                gmaps_caller.create_dist_mat(perm[i], perm[i+1])
+                gmaps_caller.create_dist_mat(perm[i], perm[i + 1])
             dur_val = json_handler.read_duration_value(file)  # reads duration value given in seconds
             curr += dur_val["value"]  # add duration value to current total
 

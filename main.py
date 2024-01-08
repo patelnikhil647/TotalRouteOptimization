@@ -1,4 +1,4 @@
-from config import configure
+from totalrouteoptimization.config import configure
 
 
 def total_route(origin, dests, end=None):

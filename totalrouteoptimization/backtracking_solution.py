@@ -1,5 +1,4 @@
-import gmaps_caller
-import json_handler
+from totalrouteoptimization import gmaps_caller, json_handler
 
 
 def backtracking_sol(origin, dests, end):
