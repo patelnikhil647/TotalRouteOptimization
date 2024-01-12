@@ -2,10 +2,10 @@ from totalrouteoptimization import gmaps_caller, json_handler
 
 
 def backtracking_sol(origin, dests, end):
-    """More efficient solution to Total Route Problem. Starting from the end of the route, backtrack by finding the
-    most efficient route from all destinations to the end. Once found, treat that destination as the "current end" and
-    find the most efficient route from all remaining destinations to the current end. Repeat until there are no
-    remaining destinations.
+    """More efficient solution to Total Route Problem than naive_solution. Starting from the end of the route,
+    backtrack by finding the most efficient route from all destinations to the end. Once found, treat that
+    destination as the "current end" and find the most efficient route from all remaining destinations to the
+    current end. Repeat until there are no remaining destinations.
     As of current, will not always return a correct result. Additionally, this solution requires an end variable
     whereas my original plan for the solution is that the end parameter is defaulted and not necessary.
     Time Complexity: O(n^2)
@@ -19,7 +19,7 @@ def backtracking_sol(origin, dests, end):
     :param end: End the route with this location
     :type end: str
 
-    :return: the order in which to visit each location
+    :return: The order in which to visit each location
     :rtype: list
     """
     ret_route = [end]  # initialize the return list with the final destination

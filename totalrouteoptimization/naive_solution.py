@@ -16,7 +16,7 @@ def naive_sol(origin, dests, end=None):
     :param end: If non-null value, will end the route with this location
     :type end: str
 
-    :return: the order in which to visit each location
+    :return: The order in which to visit each location
     :rtype: list
     """
     curr = 0

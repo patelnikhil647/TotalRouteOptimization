@@ -2,7 +2,7 @@ from totalrouteoptimization.config import configure
 
 
 def total_route(origin, dests, end=None):
-    """Finds the most time-efficient route that will visit each destination
+    """Finds the most time-efficient route that will visit each destination.
 
     :param origin: The starting location of the route
     :type origin: str
