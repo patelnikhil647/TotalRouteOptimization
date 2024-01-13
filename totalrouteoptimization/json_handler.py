@@ -28,11 +28,15 @@ def read_from_dist_mat(json_file):
     :param json_file: The name of the json file
     :type json_file: str
 
-    :return: Dictionary if json data is correct, false otherwise
+    :return: Dictionary if json_file exists and json data is correct, false otherwise
     :rtype: dict or bool
     """
     json_dir = establish_json_dir()
     filename = json_dir + json_file
+
+    if not does_file_exist(json_file):
+        return False
+
     with open(filename, 'r') as f:
         data = json.load(f)
 
@@ -40,6 +44,27 @@ def read_from_dist_mat(json_file):
     if row_elements.get("status") == "OK":
         return row_elements
     return False
+
+
+def read_from_geocode(json_file):
+    """Reads data from a given json file holding geocode data
+
+    :param json_file: The name of the json file
+    :type json_file: str
+
+    :return: A dictionary showing the coordinates of the location in the file if json_file exists, False otherwise
+    :rtype: dict or bool
+    """
+    json_dir = establish_json_dir()
+    filename = json_dir + json_file
+
+    if not does_file_exist(json_file):
+        return False
+
+    with open(filename, 'r') as f:
+        data = json.load(f)
+
+    return data[0]["geometry"]["location"]
 
 
 def read_duration_value(json_file):
@@ -103,16 +128,20 @@ def does_file_exist(json_file):
         return False
 
 
-def create_filename(first, second):
-    """Creates the standard names of distance matrix json files
+def create_filename(first, second=None):
+    """Creates the standard filenames of either distance matrix or geocoding json files.
+    If second is Null, then the desired return value is the standardized geocode filenmae, which is "location.json".
+    Else, if second is non-Null, then the desired return value is the standardized distance matrix filename,
+    which is "location1_to_location2.json".
 
-    :param first: The starting location
+    :param first: If second is None, this is the location being geocoded. Else, this is the starting location
+                  for the distance matrix
     :type first: str
 
-    :param second: The second location
+    :param second: If non-Null, this is the second location for the distance matrix
     :type second: str
 
     :return: The standardized filename
     :rtype: str
     """
-    return first + "_to_" + second + ".json"
+    return first + ".json" if second is None else first + "_to_" + second + ".json"  # ternary operator
