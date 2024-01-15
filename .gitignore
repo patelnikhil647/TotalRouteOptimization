@@ -236,3 +236,6 @@ fabric.properties
 ## Ignore json files holding google maps and testing data
 #json_files
 #*.json
+
+# All .DS_Store files
+**/.DS_Store
