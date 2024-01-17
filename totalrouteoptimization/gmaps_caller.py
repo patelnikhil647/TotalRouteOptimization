@@ -12,5 +12,5 @@ def create_dist_mat(first, second):
 
 def create_geocode(location):
     json_file = json_handler.create_filename(location)
-    result = gc.geocode(config.get_unrestricted_client(), location)
+    result = gc.geocode(config.get_geocoding_client(), location)
     json_handler.echo_to_json(result, json_file)

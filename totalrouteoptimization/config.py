@@ -19,5 +19,9 @@ def get_dist_matrix_client():
     return client.Client(key=getenv("distance_matrix_key"))
 
 
+def get_geocoding_client():
+    return client.Client(key=getenv("geocoding_key"))
+
+
 def get_unrestricted_client():
     return client.Client(key=getenv("unrestricted_key"))
