@@ -230,12 +230,5 @@ fabric.properties
 # Android studio 3.1+ serialized cache file
 .idea/caches/build_file_checksums.ser
 
-## Ignore files resulting from testing
-#test_results
-#
-## Ignore json files holding google maps and testing data
-#json_files
-#*.json
-
 # All .DS_Store files
 **/.DS_Store
